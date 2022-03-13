@@ -1,0 +1,33 @@
+#upload{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.button{
+    width: 150px;
+    background-color:  #ffffb3;
+    height: 30px;
+    margin-left: 5px;
+}
+
+#upload{
+    background-color: #B0C4DE;
+}
+
+#gerencia{
+    width: 100%;
+    background-color: dodgerblue;
+    height: 300px;
+    border-radius: 5px;
+    margin-top: 10px;
+
+}
+
+.info2{
+    padding: 10px 10px 10px 0px;
+}
+.info2 select{
+    width: 20%;
+    display: inline;
+    margin: 10px 10px 10px 10px;
+}
