@@ -4,7 +4,7 @@
 let tbody = document.getElementById('tab-body')
 
 
-function generateTableHead(tbo0dy,data){
+function generateTableHead(tbody,data){
 	;
 	let row = tbody.insertRow();
 	for (let key of data) {
@@ -21,6 +21,47 @@ function generateTableHead(tbo0dy,data){
 function generateTableRows(tbody,data){
 	let newRow = tbody.insertRow(-1);
 	data.map((row,index)=>{
+
+		if(!!row ){
+			if (row instanceof Date){
+
+				
+				if( index == 4){
+					
+					let date = new Date(row);
+					date.setHours(date.getHours()+3)
+					date = date.toLocaleTimeString('pt-BR', {  hour:'2-digit',minute:'2-digit',second:'2-digit' })
+					console.log = date
+					
+					let newCell = newRow.insertCell();
+					let newText = document.createTextNode(date);
+					newCell.appendChild(newText)
+					return
+				}else{
+					let date =  new Date(row)
+					date.setHours(date.getHours()+3)
+					date = date.toLocaleTimeString('pt-BR', { month:'2-digit', day:'2-digit'})
+					let newCell = newRow.insertCell();
+					let newText = document.createTextNode(date);
+					newCell.appendChild(newText)
+					return
+
+				}
+			
+
+
+
+
+				
+
+
+			}
+			
+			
+		
+		}
+
+
 		let newCell = newRow.insertCell();
 		let newText = document.createTextNode(row);
 
@@ -122,6 +163,7 @@ $(function(){
 		
 		let tempo = document.getElementById('#data');
 		tempo = new Date(tempo);
+		tempo.toLocaleTimeString('pt-BR', { month:'2-digit', day:'2-digit'})
 
 		var index = $(this).parent().index();
 		// Indica a coluna + ()
@@ -148,6 +190,8 @@ $(function(){
 		// Indica a coluna + ()
 		var nth = "#tbl-data td:nth-child("+(6).toString()+")";
 		var valor = $(this).val().toUpperCase();
+
+		
 		$("#tbl-data tr").show();
 		$(nth).each(function(){
 			if($(this).text().toUpperCase().indexOf(valor) < 0){
@@ -184,26 +228,23 @@ $(function(){
 
 
 
+$(function(){
+	$("#duracao").keyup(function(){		
 
+		var index = $(this).parent().index();
+		// Indica a coluna + ()
+		var nth = "#tbl-data td:nth-child("+(7).toString()+")";
+		var valor = $(this).val().toUpperCase();
+		$("#tbl-data tr").show();
+		$(nth).each(function(){
+			if($(this).text().toUpperCase().indexOf(>valor) < 0){
+				$(this).parent().hide();
+			}
+		});
+	});
 
+	$("#tipo").blur(function(){
+		$(this).val("");
+	});	
+});
 
-
-
-
-
-function deletaColuna(){
-
-	const tbDelCol = document.getElementById('#tbl-data')
-
-	 // Getting the rows in table.
-	 var linhaTb = tbDelCol.rows;  
-  
-	 // Removing the column at index(1).  
-	 var i = 7; 
-	 for (var j = 0; j < linhaTb.length; j++) {
-
-		 // Deleting the ith cell of each row.
-		 linhaTb[j].deleteCell(i);
-	 }
-	 
-}
