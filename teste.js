@@ -104,6 +104,9 @@ input.addEventListener('change', function() {
 	});
 
 
+	let contador = document.querySelector('tab-body td')
+	contador.length
+	console.log( contador )
 
 
 });
@@ -124,7 +127,10 @@ $(function(){
 		$(nth).each(function(){
 			if($(this).text().toUpperCase().indexOf(valor) < 0){
 				$(this).parent().hide();
+			
+			
 			}
+
 		});
 	});
 
@@ -161,7 +167,7 @@ $(function(){
 	$("#data").click(function(){
 		
 		
-		let tempo = document.getElementById('#data');
+		let tempo = document.getElementById('data');
 		tempo = new Date(tempo);
 		tempo.toLocaleTimeString('pt-BR', { month:'2-digit', day:'2-digit'})
 
@@ -237,9 +243,9 @@ $(function(){
 		var valor = $(this).val().toUpperCase();
 		$("#tbl-data tr").show();
 		$(nth).each(function(){
-			if($(this).text().toUpperCase().indexOf(>valor) < 0){
+			if($(this).text().toUpperCase().indexOf(valor) < 0){
 				$(this).parent().hide();
-			}
+			}	
 		});
 	});
 
@@ -248,3 +254,6 @@ $(function(){
 	});	
 });
 
+function linha (){
+	let table = document.getElementById('tbl-data')
+}
