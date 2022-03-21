@@ -17,7 +17,7 @@
 #gerencia{
     width: 100%;
     background-color: dodgerblue;
-    height: 820px;
+    height: 850px;
     border-radius: 5px;
     margin-top: 10px;
     padding: 10px;
@@ -42,6 +42,10 @@ h5{
 .info2{
     padding: 10px 10px 10px 0px;
 }
+
+#hora{
+    width: 10%;
+}
 .info2 select{
     width: 20%;
     display: inline;
@@ -50,6 +54,7 @@ h5{
 
 table{
     margin-top: 20px;
+    width: 100%;
 }
 
 #div-duracao{
@@ -84,7 +89,35 @@ table{
 
     margin: 15px 40%;
 }
+#btnTbl{
+    margin: auto;
+    height: 30px;
+}
 
 #btnTbl button{
-    margin-left: 30px;
+    margin-left: 10px;
+    display: inline;
+
 }
+
+#btn-configurar{
+    border: none;
+    background-color: dodgerblue;
+
+}
+#btn-img{
+    width: 50px;
+    padding-top: 18px;
+    margin-left: 20px;
+}
+
+#btn-configurar :hover{
+    background-color: white;
+    border-radius: 30px;
+    margin-left: 18px;
+    padding-top: 0px;
+    width: 75px;
+    margin-top: 20px;
+}
+
+
