@@ -378,25 +378,30 @@ botaoConfigurar.addEventListener('click',()=>{
 
 })
 
-function contador (){
-	//Seleciona a Tbody da tabela no DOM
-	let tableTeste = document.querySelector('#tab-body');
-	//Seleciona as td de classe(.tdOrigem) nas linhas (tr)
-	let testeTD = tableTeste.querySelectorAll('tr .tdOrigem');
-	//Variavel para contar as ligações da coluna origem.
-	let contador = 0
 
-	//percorrer todas as ligações
+
+function contadorLinha() {
+
+	//Chama a tabela no DOM.
+	let tableTeste = document.querySelector('#tab-body');
+
+	//Direciona para linha (tr) e  as TD de classe especificada.
+	let testeTD = tableTeste.querySelectorAll('tr .tdOrigem');
+	let contador =0
+	
+
+	//Contar a quantidade de ligações para o ramal 3001.
 	for (var i = 0; i < testeTD.length; i++) {
-		console.log('teste no for')
+		console.log('estou no for')
         
-		//Filtrar a coluna para ligações de origem = 3001
-      	if ((testeTD[i].textContent)=='3001'){
-            //Contador de ligações 
-			contador++
+		//filtrar as ligações com Origem 3001.
+      	if ((testeTD[i].textContent)==='3001'){
+            
+			console.log('estou no if')
+			return contador++
         }
 		
     }
-    //Quantidade de total de ligações com origem 3001	
-	console.log(contador)
+    	
+	
 }
