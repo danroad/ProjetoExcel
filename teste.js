@@ -1,7 +1,8 @@
 
-//leitura de excel
+//IMPORTAÇÃO DO EXCEL
 
 let tbody = document.getElementById('tab-body')
+
 
 
 function generateTableHead(tbody,data){
@@ -29,6 +30,8 @@ function generateTableRows(tbody,data){
 	data.map((row,index)=>{
 
 		if(!!row ){
+
+			
 			if (row instanceof Date){
 
 				
@@ -68,10 +71,9 @@ function generateTableRows(tbody,data){
 
 
 		let newCell = newRow.insertCell();
-		
-		
-		
 		let newText = document.createTextNode(row);
+
+		//EDITANDO COLUNA IMPORTADA
 		if (index == 0){
 
 			newCell.classList.add('tdData')
@@ -142,11 +144,12 @@ function generateTableRows(tbody,data){
 		
 
 		}
-
+		
 	
 		newCell.appendChild(newText)
 	})
-	
+
+
 }
 
 
@@ -158,6 +161,7 @@ input.addEventListener('change', function() {
 	var i = 1;
 	let spanContador =document.getElementById('sp-total') 
 	spanContador = spanContador.textContent = (data.length)-1;
+
 
 	data.map((row,index)=>{
 
@@ -176,15 +180,13 @@ input.addEventListener('change', function() {
 		
 		};
 
-	
-	
-	
 		
+				
 	});
 	
 
-	});
 
+	});
 
 
 
@@ -192,7 +194,7 @@ input.addEventListener('change', function() {
 
 
 
-// busca
+// SETOR - Filtro de busca 
 
 
 $(function(){
@@ -200,9 +202,9 @@ $(function(){
 
 		var index = $(this).parent().index();
 		// Indica a coluna + ()
-		var nth = "#tbl-data td:nth-child("+(3).toString()+")";
+		var nth = "#tab-body td:nth-child("+(3).toString()+")";
 		var valor = $(this).val().toUpperCase();
-		$("#tbl-data tr").show();
+		$("#tab-body tr").show();
 		$(nth).each(function(){
 			if($(this).text().toUpperCase().indexOf(valor) < 0){
 				$(this).parent().hide();
@@ -354,6 +356,7 @@ $(function(){
 		$(nth).each(function(){
 			if($(this).text().toUpperCase().indexOf(valor) < 0){
 				$(this).parent().hide();
+				console.log($(this).length)
 			}	
 		});
 
@@ -364,7 +367,7 @@ $(function(){
 	});	
 });
 
-
+//SETOR BOTAO MODAL - CONFIGURAÇÃO DE RELATÓRIO
 
 botaoConfigurar =  document.getElementById('btn-configurar');
 botaoConfigurar.addEventListener('click',()=>{
@@ -372,37 +375,28 @@ botaoConfigurar.addEventListener('click',()=>{
 	let modalExibir= new bootstrap.Modal(modalConf);
 	modalExibir.show()
 	
-})
-
-
-
-
-
-botaoPesquisar = document.getElementById('pesquisa');
-
-
-botaoPesquisar.addEventListener('click',()=>{
-	relatorioAtendida(3001,1);
 
 })
 
-function relatorioAtendida (ramal,linha){
+function contador (){
+	//Seleciona a Tbody da tabela no DOM
+	let tableTeste = document.querySelector('#tab-body');
+	//Seleciona as td de classe(.tdOrigem) nas linhas (tr)
+	let testeTD = tableTeste.querySelectorAll('tr .tdOrigem');
+	//Variavel para contar as ligações da coluna origem.
+	let contador = 0
 
-	let tabela1 = document.getElementById('relatorio')
-	let spanContador = document.getElementsByClassName(`.atendida[${linha}]`)
-	let linhaFor = tabela1.row
-	
-
-	tabela1.map(function (){
-
-		if((index[4].value ==`${ramal}`) && (index[6].value =='Saida')){
-			let contadorAtendida = spanContador.textContent = tabelaAtendida.row
-		};
-	})
-
-
+	//percorrer todas as ligações
+	for (var i = 0; i < testeTD.length; i++) {
+		console.log('teste no for')
+        
+		//Filtrar a coluna para ligações de origem = 3001
+      	if ((testeTD[i].textContent)=='3001'){
+            //Contador de ligações 
+			contador++
+        }
+		
+    }
+    //Quantidade de total de ligações com origem 3001	
+	console.log(contador)
 }
-
-
-
-

@@ -120,4 +120,10 @@ table{
     margin-top: 20px;
 }
 
+#informativo{
+    background-color: bisque;
+    padding: 10px 10px;
+    font-weight: bolder;
+}
+
 
