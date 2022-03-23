@@ -40,7 +40,7 @@ function generateTableRows(tbody,data){
 					let date = new Date(row);
 					date.setHours(date.getHours()+3)
 					date = date.toLocaleTimeString('pt-BR', {  hour:'2-digit',minute:'2-digit',second:'2-digit' })
-					console.log = date
+					
 					
 					let newCell = newRow.insertCell()
 					let newText = document.createTextNode(date);
@@ -74,6 +74,7 @@ function generateTableRows(tbody,data){
 		let newText = document.createTextNode(row);
 
 		//EDITANDO COLUNA IMPORTADA
+
 		if (index == 0){
 
 			newCell.classList.add('tdData')
@@ -106,7 +107,7 @@ function generateTableRows(tbody,data){
 		}
 		if (index == 5){
 
-			newCell.classList.add('tdStatuso')
+			newCell.classList.add('tdStatus')
 			
 			if(row =='Nao atendida'){
 
@@ -148,7 +149,9 @@ function generateTableRows(tbody,data){
 	
 		newCell.appendChild(newText)
 	})
+	
 
+	
 
 }
 
@@ -157,7 +160,7 @@ function generateTableRows(tbody,data){
 var input = document.getElementById('input')
 
 input.addEventListener('change', function() {
-  readXlsxFile(input.files[0]).then(function(data) {
+	readXlsxFile(input.files[0]).then(function(data) {
 	var i = 1;
 	let spanContador =document.getElementById('sp-total') 
 	spanContador = spanContador.textContent = (data.length)-1;
@@ -184,10 +187,24 @@ input.addEventListener('change', function() {
 				
 	});
 	
+	ramal = 3001
+	linha = 0
+
+	while ( linha<15){
+		contadorQtdChamadas(ramal,linha)
+		contadorQtdAtendidas(ramal,linha)
+		contadorQtdAPerdida(ramal,linha)
+		contadorQtdReceptivo(ramal,linha)
+		contadorTotal(linha)
+		
+		ramal++
+		linha++
+
+	}
+
 
 
 	});
-
 
 
 });
@@ -202,7 +219,7 @@ $(function(){
 
 		var index = $(this).parent().index();
 		// Indica a coluna + ()
-		var nth = "#tab-body td:nth-child("+(3).toString()+")";
+		var nth = "#tab-body td:nth-child("+(2).toString()+")";
 		var valor = $(this).val().toUpperCase();
 		$("#tab-body tr").show();
 		$(nth).each(function(){
@@ -335,11 +352,12 @@ $(function(){
 			if($(this).text().toUpperCase().indexOf(valor) < 0){
 				$(this).parent().hide();
 			}
-		});
+		});	
 	});
 
 	$("#tipo").blur(function(){
 		$(this).val("");
+	
 	});	
 });
 
@@ -369,39 +387,181 @@ $(function(){
 
 //SETOR BOTAO MODAL - CONFIGURAÇÃO DE RELATÓRIO
 
-botaoConfigurar =  document.getElementById('btn-configurar');
-botaoConfigurar.addEventListener('click',()=>{
+botaoEditar = document.getElementById('btn-editar');
+botaoEditar.addEventListener('click',()=>{
 	let modalConf= document.getElementById('modalConfiguracao');
 	let modalExibir= new bootstrap.Modal(modalConf);
 	modalExibir.show()
 	
+})
+
+
+//SETOR DE PREENCHIMENTO DO RELATORIO
+function contadorQtdChamadas(ramal,linha){
+	//Chama a tabela no DOM.
+	let tBodyFuncao = document.querySelector('#tab-body');
+
+	//Direciona para linha (tr) e  as TD de classe especificada.
+	let testeTD = tBodyFuncao.querySelectorAll('tr .tdOrigem');
+	let tabRelatorio = document.getElementById('relatorio')
+
+	let spanQtdChamadas = tabRelatorio.querySelectorAll(`.tdQtdChamadas`)
+
+
+	let contadorLinha = 0;
+
+	for (var i = 0; i < testeTD.length; i++) {
+       
+
+		if (testeTD[i].textContent == ramal){
+		   
+		  
+		   contadorLinha++
+	  	}
+	 
+	}
+	spanQtdChamadas[linha].textContent = contadorLinha
+  
+}
+
+function contadorQtdReceptivo(ramal,linha){
+	//Chama a tabela no DOM.
+	let tBodyFuncao = document.querySelector('#tab-body');
+
+	//Direciona para linha (tr) e  as TD de classe especificada.
+	let testeTD = tBodyFuncao.querySelectorAll('tr .tdDestino');
+	let tabRelatorio = document.getElementById('relatorio')
+
+	let spanQtdChamadas = tabRelatorio.querySelectorAll(`.tdReceptivo`)
+
+
+	let contadorLinha = 0;
+
+	for (var i = 0; i < testeTD.length; i++) {
+       
+
+		if ((testeTD[i].textContent == ramal) ||(testeTD[i].textContent == `Ramal ${ramal}`)  ){
+		   
+		  
+		   contadorLinha++
+	  	}
+	 
+	}
+	spanQtdChamadas[linha].textContent = contadorLinha
+  
+}
+
+
+function contadorQtdAtendidas(ramal,linha){
+	//Chama a tabela no DOM.
+	let tBodyFuncao = document.querySelector('#tab-body');
+
+	//Direciona para linha (tr) e  as TD de classe especificada.
+	let tdStatus = tBodyFuncao.querySelectorAll('tr .tdStatus');
+	let tdRamal = tBodyFuncao.querySelectorAll('tr .tdOrigem');
+	let tabRelatorio = document.getElementById('relatorio')
+
+	let spanQtdAtendidas = tabRelatorio.querySelectorAll(`.tdQtdAtendidas`)
+
+
+	let linhaQtdAtendimento = 0;
+
+	for (var i = 0; i < tdStatus.length; i++) {
+       
+
+		if ((tdStatus[i].textContent == 'Atendida') && (tdRamal[i].textContent == ramal)){
+		   
+		  
+			linhaQtdAtendimento++
+	  	}
+	 
+	}
+	spanQtdAtendidas[linha].textContent = linhaQtdAtendimento
+}
+
+function contadorQtdAPerdida(ramal,linha){
+	//Chama a tabela no DOM.
+	let tBodyFuncao = document.querySelector('#tab-body');
+
+	//Direciona para linha (tr) e  as TD de classe especificada.
+	let tdStatus = tBodyFuncao.querySelectorAll('tr .tdStatus');
+	let tdRamal = tBodyFuncao.querySelectorAll('tr .tdOrigem');
+	let tabRelatorio = document.getElementById('relatorio')
+
+	let spanQtdAtendidas = tabRelatorio.querySelectorAll(`.tdQtdNaoAtenditas`)
+
+
+	let linhaQtdAtendimento = 0;
+
+	for (var i = 0; i < tdStatus.length; i++) {
+       
+
+		if ((tdStatus[i].textContent == 'Perdida') && (tdRamal[i].textContent == ramal)){
+		   
+		  
+			linhaQtdAtendimento++
+	  	}
+	 
+	}
+	spanQtdAtendidas[linha].textContent = linhaQtdAtendimento
+}
+
+
+function contadorTotal(linha){
+	
+	let tabRelatorio = document.getElementById('relatorio')
+	let relAtendidas = tabRelatorio.querySelectorAll('.tdQtdChamadas')
+	let relReceptivo = tabRelatorio.querySelectorAll('.tdReceptivo')
+	let relTotal = tabRelatorio.querySelectorAll('.tdTotal')
+	
+	relTotal[linha].textContent = parseInt( relAtendidas[linha].textContent) + parseInt( relReceptivo[linha].textContent)
+}
+
+//AÇÃO DO BOTÃO SALVAR - MODAL
+
+let botaoSalvar = document.getElementById('btnSalvar')	
+botaoSalvar.addEventListener('click',()=>{
+	let ramal = document.getElementById('modalRamal').value;
+	ramal = parseInt(ramal);
+	console.log(ramal)
+	let nome = document.getElementById('modalConsultor').value;
+	console.log(nome)
+	let tableEditar = document.getElementById('relatorio')
+	let colunaConsultor = tableEditar.querySelectorAll('.tdConsultor');
+	colunaConsultor = colunaConsultor[ramal].textContent = nome.toUpperCase();
+	console.log(colunaConsultor);
+	
+
 
 })
 
 
 
-function contadorLinha() {
+let botaoDuracao = document.getElementById('btnDuracao');
+botaoDuracao.addEventListener('click',()=>{
+	let tableExcel = document.getElementById('tab-body');
+	let tdStatus = tableExcel.querySelectorAll('tr .tdDuracao');
+	let filtro = document.getElementById('filtroDuracao').value;
+	let tempo = document.getElementById('duracao')
 
-	//Chama a tabela no DOM.
-	let tableTeste = document.querySelector('#tab-body');
 
-	//Direciona para linha (tr) e  as TD de classe especificada.
-	let testeTD = tableTeste.querySelectorAll('tr .tdOrigem');
-	let contador =0
+	
+	for ( let i=0; i< tdStatus.length; i++){
+		if(filtro == 1 ){
+			if(!tdStatus > tempo.value){
+				
+				tdStatus.classList.add("invisivel");
+
+			}else{
+				tdStatus.classList.remove("invisivel");
+			}
+
+		}
+	}
 	
 
-	//Contar a quantidade de ligações para o ramal 3001.
-	for (var i = 0; i < testeTD.length; i++) {
-		console.log('estou no for')
-        
-		//filtrar as ligações com Origem 3001.
-      	if ((testeTD[i].textContent)==='3001'){
-            
-			console.log('estou no if')
-			return contador++
-        }
-		
-    }
-    	
+})
+
+
 	
-}
+

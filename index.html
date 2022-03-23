@@ -44,7 +44,7 @@
                  
                 <tr>
                     <td class="tdramal">3001</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" > RENILDA</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -53,7 +53,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3002</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >FERNANDA</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -62,7 +62,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3003</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >TAMIRES</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -71,7 +71,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3004</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >LEANDRO</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -89,7 +89,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3006</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >ANADSON</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -98,7 +98,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3007</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >MARIANA</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -116,7 +116,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3009</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >CLAUDIA</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -143,7 +143,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3012</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >EDINEIDE</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -152,7 +152,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3013</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >BEATRIZ</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -161,7 +161,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3014</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >ANA LUIZA</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -170,7 +170,7 @@
                 </tr>
                 <tr>
                     <td class="tdramal">3015</td>
-                    <td class="tdConsultor" ></td>
+                    <td class="tdConsultor" >THIAGO</td>
                     <td class="tdQtdChamadas"></td>
                     <td class="tdQtdAtendidas"></td>
                     <td class="tdQtdNaoAtenditas"></td>
@@ -183,8 +183,8 @@
 
         </table>
         </div>
-    <div class="" id="btnTbl">
-        <button class="btn btn-success btn-lg" ID="btn-gerar">GERAR</button> <button id="btn-configurar" data-toggle="tooltip" data-placement="top" title="Configurar usuários"><img src="config.png" id="btn-img"> </button>
+    <div  id="btnTbl">
+        <button class="btn btn-success btn-lg" ID="btn-editar">EDITAR</button>
  
     </div>         
 
@@ -198,23 +198,29 @@
     <div id="filtro1">
         
         <div class="info1">
+            
+            <div class="linha1">
 
             <label for="data"  >DATA</label>
             <input type='date' id="data" class="button" min="01" max="31" maxlength="2" step="01">
 
             <label for="hora">HORA</label>
             <input type='time' id="hora" class="button">
-
+            </div>
+            
+            <div class="linha2"></div>
             <label for="origem">ORIGEM</label>
             <input type='text' id="origem" class="button">
 
             <label for="destino">DESTINO</label>
             <input type='text' id="destino" class="button" >
+            <div class="linha"></div>
         
         </div>
         
         <div class="info2">
 
+            <div class="linha3">
             <select class="form-select" aria-label="Default select example" id="status">
                 <option selected value="">STATUS</option>
                 <option value="Atendida">ATENDIDA</option>
@@ -231,18 +237,23 @@
                 <option value="INTERNA">INTERNA</option>
             </select>
             
+            </div>
+    
+            <div class="linha4">
             <div id="div-duracao">
 
                 <label for="duracao">DURACAO</label>
 
                 <select class="form-select" aria-label="Default select example" id="filtroDuracao">
                     <option selected>FILTRO</option>
-                    <option value="2">ACIMA</option>
-                    <option value="3">ABAIXO</option>              
+                    <option value="1">ACIMA</option>
+                    <option value="2">ABAIXO</option>              
                 </select>
 
-                <input type='time' id="duracao" class="button">
-             </div>
+                <input type='time' id="duracao" class="button"> <button id="btnDuracao" class="btn btn-primary btn-sm">FILTRAR</button>
+                
+            </div>
+            </div>
 
         </div>
 
@@ -274,40 +285,40 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Cadastre o CONSULTOR e seu RAMAL</p>
+              <p>EDITAR CONSULTOR</p>
             </div>
             <div>
                 <div style="width: 30%; margin-left: 5%; display: block;">
-                <label for='ramal'> RAMAL:</label><select class="form-select" aria-label="Default select example" id="ramal">
-                    <option selected>ESCOLHA O RAMAL</option>
-                    <option value="3001">3001</option>
-                    <option value="3002">3002</option>
-                    <option value="3003">3003</option>
-                    <option value="3004">3004</option>
-                    <option value="3005">3005</option>
-                    <option value="3006">3006</option>
-                    <option value="3007">3007</option>
-                    <option value="3008">3008</option>
-                    <option value="3009">3009</option>
-                    <option value="3010">3010</option>
-                    <option value="3011">3011</option>
-                    <option value="3012">3012</option>
-                    <option value="3013">3013</option>
-                    <option value="3014">3014</option>
-                    <option value="3015">3015</option>
+                <label for='ramal'> RAMAL:</label><select class="form-select" aria-label="Default select example" id="modalRamal">
+                    <option selected>SELECIONAR</option>
+                    <option value="0">3001</option>
+                    <option value="1">3002</option>
+                    <option value="2">3003</option>
+                    <option value="3">3004</option>
+                    <option value="4">3005</option>
+                    <option value="5">3006</option>
+                    <option value="6">3007</option>
+                    <option value="7">3008</option>
+                    <option value="8">3009</option>
+                    <option value="9">3010</option>
+                    <option value="10">3011</option>
+                    <option value="11">3012</option>
+                    <option value="12">3013</option>
+                    <option value="13">3014</option>
+                    <option value="14">3015</option>
 
                     
                 </select>
                 </div>
                 <div style="width:70%; margin-left: 5%; margin-top: 10%; display: block; font-size: 20px;margin-bottom: 10%;">
                     <label for='ramal'> CONSULTOR:</label>
-                    <input type="text" class="input-group-text" placeholder="Insira o nome do CONSULTOR" style="width: 70%;" >
+                    <input type="text" class="input-group-text" style="width: 70%;" id="modalConsultor" >
                 </div>
 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">SAIR</button>
-              <button type="button" class="btn btn-primary">SALVAR</button>
+              <button type="button" class="btn btn-primary" id='btnSalvar'>SALVAR</button>
             </div>
           </div>
         </div>

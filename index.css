@@ -41,6 +41,7 @@ h5{
 
 .info2{
     padding: 10px 10px 10px 0px;
+
 }
 
 #hora{
@@ -77,9 +78,19 @@ table{
 
 #filtro1{
     background-color: #DCDCDC;
-    padding: 10px;
+    padding: 10% 5%;
     height: 350px;
     border-radius: 5px;
+    width: 100%;
+    
+}
+#filtro1 input{
+    width: 30%;
+    border-radius: 5px;
+}
+.linha2{
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 #filtro1 h5{
@@ -126,4 +137,10 @@ table{
     font-weight: bolder;
 }
 
-
+.fadeOut{
+    opacity: 0;
+    transition: 0.5s;
+}
+.invisivel{
+    display: none;
+}
